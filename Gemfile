@@ -4,7 +4,9 @@ source 'https://rubygems.org'
 
 gem 'deep_open_struct', '~> 0.1'
 gem 'dotenv', '~> 2.5'
+gem 'faraday', '~> 0.15'
 gem 'grape', '~> 1.2'
+gem 'net-http-persistent', '~> 2.9'
 gem 'puma', '~> 3.11'
 gem 'rake', '~> 12.3'
 

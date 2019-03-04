@@ -1,0 +1,70 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://eu1.locationiq.com/v1/search.php?format=json&key=28352e3522ad2a&q=Statue%20of%20Liberty
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 04 Mar 2019 21:00:03 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d28c543a8e51a8b9ccebd00a5e346730e1551733203; expires=Tue, 03-Mar-20
+        21:00:03 GMT; path=/; domain=.locationiq.com; HttpOnly
+      X-Powered-By:
+      - LocationIQ
+      Access-Control-Allow-Origin:
+      - "*"
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4b26c70a3bb2cba2-VIE
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"place_id":"87574026","licence":"https:\/\/locationiq.com\/attribution","osm_type":"way","osm_id":"32965412","boundingbox":["40.6888049","40.6896741","-74.0451069","-74.0439637"],"lat":"40.6892532","lon":"-74.0445481714432","display_name":"Statue
+        of Liberty, Flagpole Plaza, Manhattan Community Board 1, New York County,
+        New York City, New York, 10004, USA","class":"tourism","type":"attraction","importance":0.85762348916923,"icon":"https:\/\/locationiq.org\/static\/images\/mapicons\/poi_point_of_interest.p.20.png"},{"place_id":"35288236","licence":"https:\/\/locationiq.com\/attribution","osm_type":"node","osm_id":"2837177940","boundingbox":["41.3438445","41.3439445","-86.3112295","-86.3111295"],"lat":"41.3438945","lon":"-86.3111795","display_name":"Statue
+        of Liberty, North Center Street, Plymouth, Marshall County, Indiana, 46563,
+        USA","class":"tourism","type":"artwork","importance":0.66954659981371,"icon":"https:\/\/locationiq.org\/static\/images\/mapicons\/tourist_art_gallery2.p.20.png"},{"place_id":"2440944","licence":"https:\/\/locationiq.com\/attribution","osm_type":"node","osm_id":"355219404","boundingbox":["52.6257341","52.6258341","-1.1436719","-1.1435719"],"lat":"52.6257841","lon":"-1.1436219","display_name":"Statue
+        Of Liberty, Upperton Road, Bede Island, Leicester, City of Leicester, East
+        Midlands, England, LE2 7AU, United Kingdom","class":"tourism","type":"attraction","importance":0.301,"icon":"https:\/\/locationiq.org\/static\/images\/mapicons\/poi_point_of_interest.p.20.png"},{"place_id":"4132324","licence":"https:\/\/locationiq.com\/attribution","osm_type":"node","osm_id":"470199589","boundingbox":["48.1083562","48.1084562","7.3635831","7.3636831"],"lat":"48.1084062","lon":"7.3636331","display_name":"Statue
+        of Liberty, Rond-Point Libert\u00e9, Colmar, Colmar-Ribeauvill\u00e9, Haut-Rhin,
+        Grand Est, Metropolitan France, 68000, France","class":"tourism","type":"artwork","importance":0.301,"icon":"https:\/\/locationiq.org\/static\/images\/mapicons\/tourist_art_gallery2.p.20.png"},{"place_id":"7103958","licence":"https:\/\/locationiq.com\/attribution","osm_type":"node","osm_id":"799923480","boundingbox":["41.5920991","41.5921991","-93.6020838","-93.6019838"],"lat":"41.5921491","lon":"-93.6020338","display_name":"Statue
+        of Liberty, East 12th Street, East Village, Des Moines, Polk County, Iowa,
+        50319, USA","class":"historic","type":"monument","importance":0.301,"icon":"https:\/\/locationiq.org\/static\/images\/mapicons\/tourist_monument.p.20.png"},{"place_id":"247433972","licence":"https:\/\/locationiq.com\/attribution","osm_type":"node","osm_id":"6246450385","boundingbox":["40.6889328","40.6890328","-74.0448093","-74.0447093"],"lat":"40.6889828","lon":"-74.0447593","display_name":"Statue
+        Of Liberty, Flagpole Plaza, Manhattan Community Board 1, New York County,
+        New York City, New York, 10004, USA","class":"tourism","type":"viewpoint","importance":0.301,"icon":"https:\/\/locationiq.org\/static\/images\/mapicons\/tourist_view_point.p.20.png"},{"place_id":"17344323","licence":"https:\/\/locationiq.com\/attribution","osm_type":"node","osm_id":"1685642519","boundingbox":["35.6278104","35.6279104","139.7717972","139.7718972"],"lat":"35.6278604","lon":"139.7718472","display_name":"Statue
+        of Liberty, Daiba Oumi Road, 1-chome, Daiba, Minato, Tokyo, 135-8701, Japan","class":"historic","type":"monument","importance":0.301,"icon":"https:\/\/locationiq.org\/static\/images\/mapicons\/tourist_monument.p.20.png"},{"place_id":"26508794","licence":"https:\/\/locationiq.com\/attribution","osm_type":"node","osm_id":"2579439967","boundingbox":["39.1057876","39.1058876","26.5630621","26.5631621"],"lat":"39.1058376","lon":"26.5631121","display_name":"Statue
+        of Liberty, \u0391\u03c1\u03b3\u03cd\u03c1\u03b7 \u0395\u03c6\u03c4\u03b1\u03bb\u03b9\u03ce\u03c4\u03b7,
+        \u039a\u03b9\u03cc\u03c3\u03ba\u03b9, Mytilene, \u0394\u03ae\u03bc\u03bf\u03c2
+        \u039b\u03ad\u03c3\u03b2\u03bf\u03c5, North Aegean Region, Aegean, 81100,
+        Greece","class":"tourism","type":"monument","importance":0.301},{"place_id":"27298020","licence":"https:\/\/locationiq.com\/attribution","osm_type":"node","osm_id":"2625445239","boundingbox":["37.9783308","37.9784308","-103.5433845","-103.5432845"],"lat":"37.9783808","lon":"-103.5433345","display_name":"Statue
+        of Liberty, Colorado Avenue, La Junta, Otero County, Colorado, 81050, USA","class":"historic","type":"monument","importance":0.301,"icon":"https:\/\/locationiq.org\/static\/images\/mapicons\/tourist_monument.p.20.png"},{"place_id":"59499088","licence":"https:\/\/locationiq.com\/attribution","osm_type":"node","osm_id":"4806602586","boundingbox":["30.1154744","30.1155744","-95.8270278","-95.8269278"],"lat":"30.1155244","lon":"-95.8269778","display_name":"Statue
+        of Liberty, 23501, Macedonia Road, Hegar, Waller County, Texas, 77447, USA","class":"tourism","type":"artwork","importance":0.301,"icon":"https:\/\/locationiq.org\/static\/images\/mapicons\/tourist_art_gallery2.p.20.png"}]'
+    http_version: 
+  recorded_at: Mon, 04 Mar 2019 21:00:03 GMT
+recorded_with: VCR 4.0.0

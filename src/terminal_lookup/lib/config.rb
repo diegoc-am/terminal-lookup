@@ -3,7 +3,6 @@
 ENV['RACK_ENV'] ||= 'development'
 
 require 'dotenv'
-
 require 'deep_open_struct_with_key_access'
 
 module TerminalLookup
@@ -12,7 +11,14 @@ module TerminalLookup
   class Config
     Dotenv.load(*Dir['config/.env.local', "config/.env.#{ENV['RACK_ENV']}"])
 
-    CONFIG = DeepOpenStructWithKeyAccess.new({}).freeze
+    CONFIG = DeepOpenStructWithKeyAccess.new(
+      geocoding: {
+        base_url: ENV.fetch('GEOCODING_SERVICE_BASE_URL'),
+        api_token: ENV.fetch('GEOCODING_SERVICE_API_TOKEN'),
+        endpoint: ENV.fetch('GEOCODING_SERVICE_ENDPOINT'),
+        format: ENV.fetch('GEOCODING_SERVICE_FORMAT')
+      }
+    ).freeze
 
     private_constant :CONFIG
 

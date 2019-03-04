@@ -1,0 +1,51 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://eu1.locationiq.com/v1/search.php?format=json&key=28352e3522ad2a&q=ahsgdbfhjasbdfhbaskdfbahkjsdbfhkjabsdkjfbasjhkdbfkasd
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Mon, 04 Mar 2019 21:44:29 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=dcfd9c56711998e9c568725f918dc44911551735869; expires=Tue, 03-Mar-20
+        21:44:29 GMT; path=/; domain=.locationiq.com; HttpOnly
+      X-Powered-By:
+      - LocationIQ
+      Access-Control-Allow-Origin:
+      - "*"
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4b27081fed78cbae-VIE
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error":"Unable to geocode"}'
+    http_version: 
+  recorded_at: Mon, 04 Mar 2019 21:44:29 GMT
+recorded_with: VCR 4.0.0
