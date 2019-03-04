@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+ENV['RACK_ENV'] ||= 'test'
+
 require 'simplecov'
 
 SimpleCov.start { add_filter(%w[test vendor]) }
@@ -9,6 +11,14 @@ require 'minitest/autorun'
 require 'minitest/reporters'
 require 'rack/test'
 require 'approvals'
+require 'pry'
+require 'vcr'
+require 'webmock'
+
+VCR.configure do |config|
+  config.cassette_library_dir = 'test/fixtures/vcr_cassettes'
+  config.hook_into :webmock
+end
 
 Approvals.configure do |config|
   config.approvals_path = 'test/fixtures/approvals/'
