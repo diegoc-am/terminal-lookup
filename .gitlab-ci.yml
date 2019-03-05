@@ -7,8 +7,13 @@ image: "ruby:2.6.1"
 # Only needed when using a docker container to run your tests in.
 # Check out: http://docs.gitlab.com/ce/ci/docker/using_docker_images.html#what-is-a-service
 services:
+  - mysql:5.7
 
 variables:
+  MYSQL_DATABASE: locations
+  MYSQL_ROOT_PASSWORD: ''
+  MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
+  MYSQL_URL: mysql2://root@mysql/locations
 
 # Cache gems in between builds
 cache:
@@ -28,7 +33,8 @@ rubocop:
 
 tests:
   script:
-   - bundle exec rake test
+    - bundle exec rake db:migrate
+    - bundle exec rake test
 
 security-audit:
   script:

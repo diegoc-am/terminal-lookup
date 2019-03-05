@@ -6,9 +6,11 @@ gem 'deep_open_struct', '~> 0.1'
 gem 'dotenv', '~> 2.5'
 gem 'faraday', '~> 0.15'
 gem 'grape', '~> 1.2'
+gem 'mysql2', '~> 0.5'
 gem 'net-http-persistent', '~> 2.9'
 gem 'puma', '~> 3.11'
 gem 'rake', '~> 12.3'
+gem 'sequel', '~> 5.18'
 
 group :development do
   gem 'bundler-audit', '~> 0.6'

@@ -1,5 +1,43 @@
 # frozen_string_literal: true
 
+namespace :db do # rubocop:disable Metrics/BlockLength
+  require 'logger'
+  require_relative 'src/terminal_lookup/lib/connections'
+  Sequel.extension :migration
+  DB = Sequel.connect(TerminalLookup::Config.mysql.url).tap { |db| db.logger = Logger.new($stdout) }.freeze
+  FIRST_MIGRATION_DATE = 20_190_305
+
+  desc 'Prints current schema version'
+  task :version do
+    if DB.tables.include?(:schema_migrations)
+      puts "Schema Version: #{DB[:schema_migrations].order(:filename).last[:filename]}"
+    else
+      puts 'Schema not initialized'
+    end
+  end
+
+  desc 'Perform migration up to latest migration available'
+  task :migrate do
+    Sequel::Migrator.run(DB, 'db/migrations', use_transactions: true)
+    Rake::Task['db:version'].execute
+  end
+
+  desc 'Perform rollback to specified target or full rollback as default'
+  task :rollback, :target do |_t, args|
+    args.with_defaults(target: FIRST_MIGRATION_DATE)
+
+    Sequel::Migrator.run(DB, 'db/migrations', target: args[:target].to_i, use_transactions: true)
+    Rake::Task['db:version'].execute
+  end
+
+  desc 'Perform migration reset (full rollback and migration)'
+  task :reset do
+    Sequel::Migrator.run(DB, 'db/migrations', target: FIRST_MIGRATION_DATE, use_transactions: true)
+    Sequel::Migrator.run(DB, 'db/migrations', use_transactions: true)
+    Rake::Task['db:version'].execute
+  end
+end
+
 require 'rake/testtask'
 
 Rake::TestTask.new do |t|

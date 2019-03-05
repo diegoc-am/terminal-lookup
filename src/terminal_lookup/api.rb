@@ -2,6 +2,7 @@
 
 require 'grape'
 require_relative 'lib/config'
+require_relative 'lib/connections'
 
 module TerminalLookup
   ##

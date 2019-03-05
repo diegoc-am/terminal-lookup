@@ -17,6 +17,10 @@ module TerminalLookup
         api_token: ENV.fetch('GEOCODING_SERVICE_API_TOKEN'),
         endpoint: ENV.fetch('GEOCODING_SERVICE_ENDPOINT'),
         format: ENV.fetch('GEOCODING_SERVICE_FORMAT')
+      },
+      mysql: {
+        url: ENV.fetch('MYSQL_URL'),
+        max_connections: ENV['MYSQL_MAX_CONNECTIONS']&.to_i || 10
       }
     ).freeze
 
