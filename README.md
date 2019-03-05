@@ -1,4 +1,4 @@
-# Friendly Neighbor API
+# Terminal Lookup
 
 [![pipeline status](https://gitlab.com/belfazt/terminal-lookup/badges/master/pipeline.svg)](https://gitlab.com/belfazt/terminal-lookup/commits/master)
 [![coverage report](https://gitlab.com/belfazt/terminal-lookup/badges/master/coverage.svg)](https://gitlab.com/belfazt/terminal-lookup/commits/master)
