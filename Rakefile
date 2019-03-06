@@ -38,6 +38,30 @@ namespace :db do # rubocop:disable Metrics/BlockLength
   end
 end
 
+task :import_locodes do
+  require 'down'
+  require 'zip'
+  require_relative 'src/terminal_lookup/lib/csv_processor'
+  require_relative 'src/terminal_lookup/repository/location'
+
+  UN_LOCODES_URL = 'https://www.unece.org/fileadmin/DAM/cefact/locode/loc182csv.zip'
+
+  tempfile = Down.download(UN_LOCODES_URL)
+
+  Zip::File.open(tempfile) do |zip_file|
+    zip_file.each do |entry|
+      next unless entry.name.include?('CodeListPart')
+
+      file = Tempfile.new
+      entry.extract(file) { true } # proc to overwrite the file
+      TerminalLookup::Repository::Location.create_multiple(TerminalLookup::CSVProcessor.run(file))
+      file.unlink
+    end
+  end
+
+  tempfile.unlink
+end
+
 require 'rake/testtask'
 
 Rake::TestTask.new do |t|
