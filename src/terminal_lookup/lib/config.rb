@@ -21,6 +21,9 @@ module TerminalLookup
       mysql: {
         url: ENV.fetch('MYSQL_URL'),
         max_connections: ENV['MYSQL_MAX_CONNECTIONS']&.to_i || 10
+      },
+      log: {
+        level: Logger.const_get((ENV['LOG_LEVEL'] || 'error').upcase)
       }
     ).freeze
 

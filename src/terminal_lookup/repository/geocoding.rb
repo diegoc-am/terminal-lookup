@@ -12,9 +12,7 @@ module TerminalLookup
     # Geocoding Lookup
     class Geocoding
       CONNECTION = Faraday.new(url: Config.geocoding.base_url) do |conn|
-        conn.response :logger do |logger|
-          logger.filter(/(key=)(\w+)/, '\1[REMOVED]')
-        end
+        conn.response :logger, Logger.new(STDOUT, level: Config.log.level)
         conn.adapter :net_http_persistent
       end
       private_constant :CONNECTION

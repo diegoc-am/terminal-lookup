@@ -2,10 +2,13 @@
 
 require 'csv'
 require 'date'
+require 'logger'
 require_relative 'coordinates_parser'
 require_relative '../model/location'
 
 module TerminalLookup
+  ##
+  # Convers the csv file into an array of models
   class CSVProcessor
     COLUMNS = %i[
       change
@@ -23,6 +26,8 @@ module TerminalLookup
       locode
     ].freeze
 
+    LOGGER = Logger.new(STDOUT, level: Config.log.level).freeze
+
     class << self
       def run(file)
         CSV.foreach(
@@ -31,8 +36,8 @@ module TerminalLookup
           parsed_row = parse_row(row)
 
           array << Model::Location.new(parsed_row)
-        rescue Dry::Struct::Error
-          # ignore
+        rescue Dry::Struct::Error => e
+          LOGGER.info("Could not add #{parsed_row} { error => #{e.message} }")
         end
       end
 

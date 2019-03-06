@@ -11,14 +11,15 @@ module TerminalLookup
       DB = Connections.mysql
 
       class << self
-        def create(attributes)
+        def create(attributes) # rubocop:disable Metrics/AbcSize
           attrs = attributes.to_h
 
           model = Model::Location.new(attributes) # ensure data sanity
 
+          function = attrs.delete(:function)
+          attrs[:location] = Sequel.lit("Point(#{attrs[:location][:latitude]}, #{attrs[:location][:longitude]})")
+
           DB.transaction(rollback: :reraise) do
-            function = attrs.delete(:function)
-            attrs[:location] = Sequel.lit("Point(#{attrs[:location][:latitude]}, #{attrs[:location][:longitude]})")
             DB[:locations].insert(attrs)
             function.each { |f| DB[:functions].insert(locode: attrs[:locode], function: f) }
           end
@@ -50,7 +51,7 @@ module TerminalLookup
           Model::Location.new(result)
         end
 
-        def closest_locations(point:, radius: 50_000, limit: 10)
+        def closest_locations(point:, radius: 50_000, limit: 10) # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
           distance = radius / 100 / 111
           DB[:locations].select(
             :locode,
@@ -70,7 +71,7 @@ module TerminalLookup
                 )
               SQL
             )
-          ).order(:distance_in_meters).limit(10).map do |e|
+          ).order(:distance_in_meters).limit(limit).map do |e|
             { location: find(locode: e[:locode]), distance_in_meters: e[:distance_in_meters] }
           end
         end
