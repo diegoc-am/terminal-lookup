@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style type="text/css">
+    #map { height: 70vh; }
+  </style>
+
+  <title>Terminal Lookup</title>
+</head>
+
+<body>
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">Terminal Lookup</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="row">
+      <div class="col s6">
+        <div class="row">
+          <div class="col s12">
+            <div class="row">
+              <div class="input-field col s12">
+                <i class="material-icons prefix">create</i>
+                <input type="text" placeholder="Type an address">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col s6">
+        <div id="map"></div>
+      </div>
+    </div>
+  </div>
+
+  <!--JavaScript at end of body for optimized loading-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+  <script src="https://tiles.unwiredmaps.com/js/leaflet-unwired.js"></script>
+
+  <script type="text/javascript">
+    // API token goes here
+    var key = 'pk.da7022d4c9cc6f4f4e49f3b4964dfbc1';
+
+    // Add layers that we need to the map
+    var streets = L.tileLayer.Unwired({ key: key, scheme: "streets" });
+
+    // Initialize the map
+    var map = L.map('map', {
+      center: [53.5489937, 9.9856201], //map loads with this location as center
+      zoom: 10,
+      layers: [streets] // Show 'streets' by default
+    });
+
+    // Add the 'scale' control
+    L.control.scale().addTo(map);
+  </script>
+</body>
+
+</html>
