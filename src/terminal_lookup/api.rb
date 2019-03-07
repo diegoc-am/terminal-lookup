@@ -8,6 +8,7 @@ module TerminalLookup
   ##
   # Main API instatiation
   class API < Grape::API
+    version :v1, using: :path
     format :json
     prefix :api
 
