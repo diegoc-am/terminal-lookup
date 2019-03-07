@@ -13,6 +13,7 @@ gem 'mysql2', '~> 0.5'
 gem 'net-http-persistent', '~> 2.9'
 gem 'puma', '~> 3.11'
 gem 'rake', '~> 12.3'
+gem 'rubyzip', '~> 1.0'
 gem 'sequel', '~> 5.18'
 
 group :development do
