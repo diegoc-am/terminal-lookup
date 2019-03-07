@@ -28,19 +28,17 @@
 
   <div class="container">
     <div class="row">
-      <div class="col s6">
+      <div class="col s12">
         <div class="row">
           <div class="col s12">
             <div class="row">
               <div class="input-field col s12">
                 <i class="material-icons prefix">create</i>
-                <input type="text" placeholder="Type an address">
+                <input type="text" id="address" placeholder="Type an address">
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="col s6">
         <div id="map"></div>
       </div>
     </div>
@@ -60,13 +58,54 @@
 
     // Initialize the map
     var map = L.map('map', {
-      center: [53.5489937, 9.9856201], //map loads with this location as center
+      center: [53.5489937, 9.9856201], //map loads with this location as center (Hamburg)
       zoom: 10,
       layers: [streets] // Show 'streets' by default
     });
 
     // Add the 'scale' control
     L.control.scale().addTo(map);
+
+    var markers = [];
+
+    function search(address) {
+      fetch('/api/v1/search?address=' + address)
+        .then(function(response) {
+          return response.json();
+        })
+        .then(function(jsonResponse) {
+          if (jsonResponse.length > 0) {
+            for (let index = 0; index < markers.length; index++) {
+              const element = markers[index];
+              element.remove();
+            }
+
+            for (let index = 0; index < jsonResponse.length; index++) {
+              const element = jsonResponse[index];
+              const latitude = element['location']['location']['latitude'];
+              const longitude = element['location']['location']['longitude']
+              map.panTo([latitude, longitude]);
+              markers[index] = L.marker([latitude, longitude]);
+              markers[index].bindTooltip(
+                element['location']['name'] + '<br>' +
+                'Latitude: ' + latitude + ', Longitude: ' + longitude + '<br>' +
+                'Country: ' + element['location']['country_code'], + ', Identifier: ' + element['location']['identifier']
+              );
+              markers[index].addTo(map);
+            }
+
+          } else {
+            alert('Could not find any results');
+          }
+        });
+    }
+
+    document.getElementById('address').onkeydown = function(event) {
+      var e = event || window.event;
+      if(e.keyCode == 13) {
+        search(document.getElementById('address').value);
+      };
+    };
   </script>
 </body>
 
