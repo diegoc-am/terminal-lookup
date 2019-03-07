@@ -1,0 +1,27 @@
+[
+  {
+    "location": {
+      "country_code": "AD",
+      "identifier": "ALV",
+      "change": null,
+      "name": "Andorra la Vella",
+      "function": [
+        "3",
+        "4",
+        "6"
+      ],
+      "name_without_diacritics": "Andorra la Vella",
+      "subdiv": null,
+      "date": "2016-01-01",
+      "iata": null,
+      "remarks": "",
+      "status": "AI",
+      "location": {
+        "latitude": 42.5,
+        "longitude": 1.5166666666666666
+      },
+      "locode": "ADALV"
+    },
+    "distance_in_meters": 924.2812105467569
+  }
+]

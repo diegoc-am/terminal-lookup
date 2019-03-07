@@ -5,6 +5,8 @@ require_relative '../repository/location'
 
 module TerminalLookup
   module BusinessLogic
+    ##
+    # Finds nearby terminals
     class FindNearbyTerminals
       def initialize(address:, limit: 10, radius: 50_000)
         @address = address
