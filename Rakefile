@@ -71,10 +71,17 @@ Rake::TestTask.new do |t|
   t.warning = false
 end
 
-require 'bundler/audit/task'
-Bundler::Audit::Task.new
+task build: [:test]
 
-require 'rubocop/rake_task'
-RuboCop::RakeTask.new
+begin
+  require 'bundler/audit/task'
+  Bundler::Audit::Task.new
 
-task default: %i[bundle:audit rubocop test]
+  require 'rubocop/rake_task'
+  RuboCop::RakeTask.new
+
+  task build: %i[bundle:audit rubocop test]
+rescue LoadError # rubocop:disable Lint/HandleExceptions
+end
+
+task default: :build
