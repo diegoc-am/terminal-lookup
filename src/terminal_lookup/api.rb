@@ -19,7 +19,7 @@ module TerminalLookup
 
     params do
       requires :address, type: String
-      optional :radius, type: Integer, default: 50_000
+      optional :radius, type: Integer, default: 100_000
       optional :limit, type: Integer, default: 10
     end
     get '/search' do
