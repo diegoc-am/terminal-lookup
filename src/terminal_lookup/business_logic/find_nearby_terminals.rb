@@ -16,7 +16,7 @@ module TerminalLookup
 
       def run
         point = Repository::Geocoding.search(address: @address)
-        raise unless point
+        return [] unless point
 
         Repository::Location.closest_locations(point: point, radius: @radius, limit: @limit)
       end
