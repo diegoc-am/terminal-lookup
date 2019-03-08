@@ -10,6 +10,8 @@ module TerminalLookup
     class Location
       DB = Connections.mysql
 
+      DISTANCE_PER_LAT_LON_POINT = 110.567 * 1000
+
       class << self
         def create(attributes) # rubocop:disable Metrics/AbcSize
           attrs = attributes.to_h
@@ -62,7 +64,7 @@ module TerminalLookup
         end
 
         def closest_locations(point:, radius: 50_000, limit: 10) # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
-          distance = radius / 100 / 111
+          distance = radius / DISTANCE_PER_LAT_LON_POINT
           results = DB[:locations].select(
             :locode,
             Sequel.as(
