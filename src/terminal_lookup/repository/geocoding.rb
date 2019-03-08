@@ -11,8 +11,9 @@ module TerminalLookup
     ##
     # Geocoding Lookup
     class Geocoding
+      LOGGER = Logger.new(STDOUT, level: Config.log.level).freeze
       CONNECTION = Faraday.new(url: Config.geocoding.base_url) do |conn|
-        conn.response :logger, Logger.new(STDOUT, level: Config.log.level)
+        conn.response :logger, LOGGER
         conn.adapter :net_http_persistent
       end
       private_constant :CONNECTION
@@ -22,7 +23,12 @@ module TerminalLookup
 
       class << self
         def search(address:)
-          response = query(address)
+          begin
+            response = query(address)
+          rescue ::Faraday::Error => e
+            LOGGER.error("Something went wrong while getting the address: #{e.message}")
+            nil
+          end
 
           return nil unless VALID_STATUS.include?(response.status)
 
