@@ -5,6 +5,40 @@
 
 ## Developing
 
+### Dependencies
+
+- docker
+- docker-compose
+- rbenv
+
+### Installation
+
+```sh
+rbenv install
+gem install bundler
+bundle install
+docker-compose up -d
+bundle exec rake db:migrate
+```
+
+#### Loading location codes
+
+```sh
+bundle exec rake import_locodes
+```
+
+#### Running the tests
+
+```sh
+bundle exec rake test
+```
+
+#### Running an evaluation suite
+
+```sh
+bundle exec rake
+```
+
 ### Shipping
 
 ```sh
