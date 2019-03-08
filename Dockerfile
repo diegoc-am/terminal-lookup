@@ -10,6 +10,7 @@ RUN apk --update add --virtual build-dependencies ruby-dev build-base && \
 
 ADD config.ru /app
 ADD src/ /app/src
+ADD public/ /app/public
 RUN chown -R nobody:nobody /app
 USER nobody
 EXPOSE 8080
