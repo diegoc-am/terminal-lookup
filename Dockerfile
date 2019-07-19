@@ -1,4 +1,4 @@
-FROM ruby:2.6.1-alpine
+FROM ruby:2.6.3-alpine
 
 ADD Gemfile /app/
 ADD Gemfile.lock /app/
