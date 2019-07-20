@@ -37,7 +37,7 @@ module TerminalLookup
 
           array << Model::Location.new(parsed_row)
         rescue Dry::Struct::Error => e
-          LOGGER.info("Could not add #{parsed_row} { error => #{e.message} }")
+          LOGGER.error("Could not add #{parsed_row} { error => #{e.message} }")
         end
       end
 
