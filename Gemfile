@@ -15,7 +15,7 @@ gem 'puma', '~> 3.11'
 gem 'rack', '~> 2.0'
 gem 'rack-contrib', '~> 2.1'
 gem 'rake', '~> 12.3'
-gem 'rubyzip', '~> 1.0'
+gem 'rubyzip', '~> 1.3'
 gem 'sequel', '~> 5.18'
 
 group :development do
